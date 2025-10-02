@@ -18,7 +18,7 @@ def check_file(filename):
         el.attrib["Include"] for el in parse_tree.iter("{*}PlaceholderReference")
     )
     fixed_version_libraries = set(
-        el.attrib["Include"] for el in parse_tree.iter("{*}PlaceholderResolution")
+        el.attrib["Include"].split(',')[0] for el in parse_tree.iter("{*}PlaceholderResolution")
     )
 
     non_fixed_library_versions = added_libraries - fixed_version_libraries
